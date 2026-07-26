@@ -1,0 +1,305 @@
+.about-container {
+    padding: 4rem 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+html {
+    scroll-behavior: smooth;
+}
+.about-hero {
+    text-align: left;
+    margin-bottom: 6rem;
+}
+
+.about-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.intro-text {
+    font-size: 1.4rem;
+    max-width: 800px;
+    color: #333;
+    line-height: 1.8;
+}
+
+/* Business Mindset */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    border-left: 5px solid var(--text-color);
+    padding-left: 1rem;
+}
+
+.mindset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 6rem;
+}
+
+.mindset-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 10px 10px 0px var(--accent-color);
+    border: 1px solid var(--text-color);
+    transition: 0.3s;
+}
+
+.mindset-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px var(--text-color);
+}
+
+/* Research Section */
+.research-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 6rem;
+}
+
+.research-card {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 2rem 0;
+}
+
+.year {
+    font-weight: 700;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Interests */
+.interests-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.interest-pill {
+    padding: 0.8rem 1.5rem;
+    background: white;
+    border: 1px solid var(--text-color);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: default;
+    transition: 0.3s;
+}
+
+.interest-pill:hover {
+    background: var(--text-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .about-container { padding: 3rem 6%; }
+    .mindset-grid { grid-template-columns: 1fr; }
+    .about-hero h1 { font-size: 2.5rem; }
+    .intro-text { font-size: 1.15rem; }
+    .timeline { padding-left: 1.5rem; margin-left: 0.5rem; }
+    .timeline-dot { left: -2.15rem; }
+}
+
+@media (max-width: 480px) {
+    .about-container { padding: 2.5rem 5%; }
+    .about-hero h1 { font-size: 2rem; }
+    .section-title { font-size: 1.5rem; }
+    .mindset-card { padding: 1.75rem; }
+    .timeline-content { padding: 1.25rem 1.25rem; }
+    .interest-pill { padding: 0.6rem 1.1rem; font-size: 0.9rem; }
+}
+/* Footer Styles */
+.site-footer {
+    background-color: var(--text-color);
+    color: white;
+    padding: 4rem 10% 2rem;
+    margin-top: 5rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 2rem;
+}
+
+.footer-left h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.footer-right p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-right a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-right a:hover {
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+/* Timeline Container */
+.education-section {
+    margin-bottom: 6rem;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid var(--text-color);
+    margin-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+/* The Animated Dot */
+.timeline-dot {
+    position: absolute;
+    left: -2.65rem;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--accent-color);
+    border: 3px solid var(--text-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    background-color: var(--text-color);
+    transform: scale(1.3);
+}
+
+/* Timeline Cards */
+.timeline-content {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content {
+    box-shadow: 10px 10px 0px var(--accent-color);
+    transform: translateX(10px);
+}
+
+.edu-year {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #666;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.institution {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.edu-stats {
+    margin-bottom: 1rem;
+}
+
+.stat-pill {
+    background: var(--bg-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid var(--accent-color);
+}
+
+.edu-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+}
+/* Logo Link Styling */
+.logo-link {
+    text-decoration: none;
+    color: var(--text-color); /* Keeps the dark blue/black color you already have */
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.7; /* Gives a subtle visual feedback when hovered */
+}
+/* --- Header & Navigation Consistency --- */
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-item {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+/* The animated underline effect from index.html */
+.social-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--text-color);
+    transition: width 0.3s ease;
+}
+
+.social-item:hover::after {
+    width: 100%;
+}
+
+.social-item:hover {
+    opacity: 0.8;
+}
+
+/* Logo Link Consistency */
+.logo-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.7;
+}

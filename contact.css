@@ -1,0 +1,149 @@
+/* --- Variables --- */
+:root {
+    --bg-color: #fdfcd3;
+    --text-color: #000839;
+    --accent-color: #e9e583;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at center, #fffef0 0%, var(--bg-color) 100%);
+    overflow-x: hidden;
+}
+
+.hub-section {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 80px;
+}
+
+/* --- THE FIX: Centered and Layered Hover Hint --- */
+.hover-hint {
+    position: absolute;
+    top: calc(50% - 85px); /* Positioned above the center */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 110; /* Higher than trigger z-index */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.7; /* Increased opacity for better visibility */
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+}
+
+.hover-hint.hidden { opacity: 0; }
+
+/* --- Glowing Central Trigger --- */
+.trigger {
+    width: 100px;
+    height: 100px;
+    background: var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: hubGlow 2.5s infinite;
+}
+
+@keyframes hubGlow {
+    0% { box-shadow: 0 0 0 0 rgba(0, 8, 57, 0.4); }
+    70% { box-shadow: 0 0 0 25px rgba(233, 229, 131, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 8, 57, 0); }
+}
+
+.trigger.hidden {
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+}
+
+.trigger-icon {
+    width: 45px; height: 45px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/3135/3135768.png');
+    background-size: contain; background-repeat: no-repeat;
+    filter: invert(1);
+}
+
+/* --- Dispersion Wrap --- */
+.wrap {
+    position: absolute;
+    width: 0; height: 0;
+    display: flex; justify-content: center; align-items: center;
+    pointer-events: none;
+}
+
+.wrap.active { pointer-events: auto; }
+
+.wrap a {
+    position: absolute;
+    width: 110px; height: 110px;
+    background: #ffffff;
+    border: 2px solid var(--text-color);
+    border-radius: 24px;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 8px 8px 0px var(--text-color);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+}
+
+.wrap.active a { opacity: 1; }
+
+/* Dispersion Coordinates (Symmetrical Square) */
+.wrap.active a:nth-child(1) { transform: translate(-180px, -180px) scale(1); }
+.wrap.active a:nth-child(2) { transform: translate(180px, -180px) scale(1); }
+.wrap.active a:nth-child(3) { transform: translate(-180px, 180px) scale(1); }
+.wrap.active a:nth-child(4) { transform: translate(180px, 180px) scale(1); }
+.wrap.active a:nth-child(5) { 
+    transform: translate(0, 0) scale(1.15); 
+    background: var(--accent-color); 
+    border-radius: 50%;
+    z-index: 101;
+}
+
+.icon-img { width: 60px; height: 60px; background-size: contain; background-repeat: no-repeat; background-position: center; }
+a:nth-child(1) .icon-img { background-image: url('https://cdn-icons-png.flaticon.com/512/174/174855.png'); }
+a:nth-child(2) .icon-img { background-image: url('https://cdn-icons-png.flaticon.com/512/25/25231.png'); }
+a:nth-child(3) .icon-img { background-image: url('https://cdn-icons-png.flaticon.com/512/174/174857.png'); }
+a:nth-child(4) .icon-img { background-image: url('https://cdn-icons-png.flaticon.com/512/124/124010.png'); }
+a:nth-child(5) .icon-img { background-image: url('https://cdn-icons-png.flaticon.com/512/909/909314.png'); }
+
+/* --- Mobile: shrink the hub and pull the dispersed icons in so they stay on-screen --- */
+@media (max-width: 700px) {
+    .hub-section { height: 80vh; padding-top: 60px; }
+    .hover-hint { top: calc(50% - 70px); font-size: 0.75rem; letter-spacing: 2px; }
+    .trigger { width: 85px; height: 85px; }
+    .trigger-icon { width: 38px; height: 38px; }
+    .wrap a { width: 88px; height: 88px; border-radius: 20px; box-shadow: 6px 6px 0px var(--text-color); }
+    .icon-img { width: 46px; height: 46px; }
+    .wrap.active a:nth-child(1) { transform: translate(-100px, -100px) scale(1); }
+    .wrap.active a:nth-child(2) { transform: translate(100px, -100px) scale(1); }
+    .wrap.active a:nth-child(3) { transform: translate(-100px, 100px) scale(1); }
+    .wrap.active a:nth-child(4) { transform: translate(100px, 100px) scale(1); }
+    .wrap.active a:nth-child(5) { transform: translate(0, 0) scale(1.15); }
+}
+
+@media (max-width: 400px) {
+    .trigger { width: 75px; height: 75px; }
+    .wrap a { width: 78px; height: 78px; }
+    .icon-img { width: 40px; height: 40px; }
+    .wrap.active a:nth-child(1) { transform: translate(-78px, -78px) scale(1); }
+    .wrap.active a:nth-child(2) { transform: translate(78px, -78px) scale(1); }
+    .wrap.active a:nth-child(3) { transform: translate(-78px, 78px) scale(1); }
+    .wrap.active a:nth-child(4) { transform: translate(78px, 78px) scale(1); }
+}
